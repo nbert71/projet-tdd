@@ -1,3 +1,5 @@
+import path from 'path';
+
 import express from "express"
 import  {logger}  from "./logger"
 
@@ -7,8 +9,10 @@ app.use((req, res, next)=>{
   next()
 })
 
+app.use('/static', express.static(path.join(process.cwd(), '/static')))
+
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.redirect(301, '/static/index.html')
 })
 
 export {app}

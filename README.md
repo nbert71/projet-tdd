@@ -7,3 +7,7 @@
 ## TODO
 
 - Regarder les levels de log de pino (par défaut)
+
+## Prochaine étape
+
+Ajouter un post de blog et un utilisateur
