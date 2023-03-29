@@ -1,11 +1,9 @@
-import express from "express"
-const app = express()
-const port = 3000
+import { app } from "./src/app"
+import { logger } from "./src/logger"
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+const port:number = 3000
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+    logger.info(`Example app listening on port ${port}`)
+    // console.log(`Example app listening on port ${port}`)
 })
