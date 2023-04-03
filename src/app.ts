@@ -18,19 +18,19 @@ app.get("/", (req, res) => {
     res.redirect(301, "/static/index.html");
 });
 
-app.post("/post", (req, res) => {
+app.post("/post", async (req, res) => {
     // console.log(req.body)
     let t: string = req.body.title;
-    prisma.post.create({
+    const create_post = await prisma.post.create({
         data: {
             title: t,
         },
     });
-    res.send(JSON.stringify(req.body));
+    res.send(JSON.stringify(create_post));
 });
 
-app.get("/posts", (req, res) => {
-    res.send(prisma.post.findMany());
+app.get("/posts", async (req, res) => {
+    res.send(await prisma.post.findMany());
 });
 
 export { app };
