@@ -1,6 +1,6 @@
 import path from 'path';
 
-import express from "express"
+import express, { json } from "express"
 import  {logger}  from "./logger"
 import { PrismaClient } from '@prisma/client'
 
@@ -12,10 +12,18 @@ app.use((req, res, next)=>{
   next()
 })
 
+app.use(json())
+
 app.use('/static', express.static(path.join(process.cwd(), '/static')))
 
 app.get('/', (req, res) => {
   res.redirect(301, '/static/index.html')
+})
+
+app.post('/submit',(req, res) => {
+  console.log(req.body)
+  res.send(JSON.stringify(req.body))
+
 })
 
 export {app}
