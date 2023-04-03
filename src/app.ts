@@ -2,6 +2,9 @@ import path from 'path';
 
 import express from "express"
 import  {logger}  from "./logger"
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
 
 const app = express()
 app.use((req, res, next)=>{
